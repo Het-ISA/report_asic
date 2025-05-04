@@ -1,0 +1,178 @@
+\documentclass[12pt]{report}
+\usepackage{flushend}
+\usepackage{graphicx}
+\usepackage[noadjust]{cite}
+\usepackage[toc,acronym,description,sort=def]{glossaries}
+\usepackage{sectsty}
+\usepackage{setspace}
+\usepackage{enumerate}
+\usepackage{IEEEtrantools}
+\usepackage{paralist}
+\usepackage{chngcntr}
+\usepackage{ftnxtra}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\counterwithout{footnote}{chapter}
+%\usepackage[top=1.4 in]{geometry}
+\algnewcommand{\LeftComment}[1]{\Statex \(\triangleright\) #1}
+\renewcommand{\bibname}{References}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\chapterfont{\centering}
+\pagestyle{headings}
+\onehalfspacing
+
+%************Glossary*************%
+
+\makeglossaries
+
+\newglossaryentry{dna}
+{
+    name=DNA,
+    description={Deoxyribo Nucleic Acid, a molecule that codes genetic instructions in living organisms. It is a \emph{string} of 4 `nucleotides' - Nitrogen containing bases: Cytosine (C), Guanine (G), Adenine (A), and Thymine (T)}
+}
+
+ 
+%********End of Glossary**********%
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\vspace{1cm}
+\huge
+\textbf{Project Title}\\
+
+\normalsize
+\textbf{CS4099 Project Final Report}\\
+\vspace{1cm}
+\emph{Submitted by}\\        
+\vspace{0.5cm}
+\begin{tabular}{ccc}
+\textbf{Name1 }&& \textbf{Reg No: 1 }\\
+\textbf{Name2}&&\textbf{Reg No: 2} \\
+\textbf{Name3 }&& \textbf{Reg No: 3 }\\
+%\textbf{Name4}&&\textbf{Reg No: 4} \\
+\end{tabular}\\
+\vspace{0.8cm}
+\textbf{Under the Guidance of\\Guide's Name}\\
+\vspace{0.8cm}
+\begin{center}
+ \includegraphics[width=0.2\textwidth]{nitc-logo.png}
+\end{center}
+\vspace{0.8cm}
+\textbf{Department of Computer Science and Engineering}\\
+\textbf{National Institute of Technology Calicut}\\
+\textbf{Calicut, Kerala, India - 673 601}\\
+\vspace{0.8cm}
+\textbf{April 15, 2025}
+\end{center}
+\end{titlepage}
+\pagenumbering{roman}
+\begin{spacing}{1.01}
+{
+\thispagestyle{empty}
+
+\fontsize{14}{14}\selectfont
+\centering{\MakeUppercase{\textbf{National Institute of Technology Calicut, Kerala, India - 673 601}}} \\
+\vspace*{0.5cm}
+\fontsize{12}{12}\selectfont
+\centering{\MakeUppercase{\textbf{DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING}}} \\
+\begin{figure}[ht]
+{\centering {\includegraphics[width=0.2\textwidth]{nitc-logo.png}}\par}
+\end{figure}
+2025\\
+\vspace{0.5cm}
+\fontsize{14}{14}\selectfont
+\textbf{\centering{CERTIFICATE}}\\
+\vspace{0.25cm}
+\fontsize{12}{12}\selectfont
+\onehalfspacing{\textit{Certified that this is a bonafide record of the project work titled}}\\
+\vspace*{0.25cm}
+\textbf{\MakeUppercase{Project Title}}\\
+\vspace*{0.25cm}
+\onehalfspacing{\centering{\textit{done by}}}\\
+\vspace*{0.25cm}
+\begin{tabular}{ccc}
+\textbf{Name1 }\\
+\textbf{Name2}\\
+\textbf{Name3}\\
+%\textbf{Name4} \\
+\end{tabular}\\
+\vspace*{0.25cm}
+\onehalfspacing{ \textit{\centering{of eighth semester B. Tech in partial fulfillment of the requirements for the award of the degree of Bachelor of Technology in Computer Science and Engineering of the National Institute of Technology Calicut}}}\\
+\vspace*{0.5cm}
+\noindent{
+\begin{tabular}{p{4.5cm}cp{4.5cm}}
+\textbf{Project Guide}  & \hfill \textbf{Head of Department} \\
+Guide & \hspace{5cm} Dr. Subashini R\\
+Designation & \hspace{5cm} Associate Professor\\
+ & & \\
+ & & \\
+  & & \\
+
+\end{tabular}
+}
+}
+\chapter*{DECLARATION}
+We hereby declare that the project titled, \textbf{Project Title}, is our own work and that, to the best of our knowledge and belief, it contains no material previously published or written by another person nor material which has been accepted for the award of any other degree or diploma of the university or any other institute of higher learning, except where due acknowledgement and reference has been made in the text.\\
+
+\vspace{2cm}
+\noindent{
+\begin{tabular}{p{8cm}p{6cm}}
+Place :  & Signature : \\
+Date : & Name : \\
+ & Reg. No. : 
+\end{tabular}
+}
+\newpage 
+
+\begin{abstract}
+Insert your abstract here. Please try to make it less than 150 words.
+\end{abstract}
+\chapter*{\rm \large \bf ACKNOWLEDGEMENT}
+\vspace{4.0mm}
+\tableofcontents
+\addtocontents{toc}{\vskip-30pt}
+\end{spacing}
+\listoffigures
+\listoftables
+\vspace{-2 em}
+\printglossary[nonumberlist]
+
+
+\pagenumbering{arabic}
+
+\chapter{Introduction}
+Brief details introducing the topic of your \textit{project work}. Here  you  need  to  outline  the  underlying  concepts and   a 
+brief version of any theory needed to discuss the project (if required).
+\chapter{Literature Survey}
+Literature Survey is the process of reading, analyzing, evaluating, and summarizing scholarly materials about a specific topic/area. When you write a literature review in respect of your project, you have to write about researches made by various analysts - their methodology and the conclusions they have arrived at. You should also give an account of how this research has influenced your work. All sources \cite{bib1} cited in the literature review should be listed in the references.
+\chapter{Problem Definition}
+A problem statement is a concise description of the issues that need to be addressed by the project group. This statement should illustrate a clear vision and the overall method that will be used to solve the problem at hand.
+
+\chapter{Methodology}
+The work that you have done so far related with the project should be stated  clearly. Include separate sections for details of design, implementation etc.
+\begin{figure}[!b]
+\centering
+  \includegraphics[scale = 0.3]{sample.png}
+  \caption{Image caption}
+  \label{label1}
+\end{figure}
+
+\chapter{Results}
+
+Show the results of your project by suitable test cases/data sets. Give the analysis of the result obtained (or the proof of currectness of the algorithm) by comparing results with that of any alternative system/algorithm.
+
+\chapter{Conclusion and Future work}
+
+Give a brief description of the work that you have done and mention the overall results and findings. Suggest modifications/extentions possible over your project if any.
+
+\addcontentsline{toc}{chapter}{References}
+% add BibTex of References in the project.bib file
+\nocite{*}
+\bibliographystyle{ieeetr}
+
+\bibliography{project.bib}
+\end{document}

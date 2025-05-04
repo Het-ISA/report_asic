@@ -1,0 +1,28 @@
+\vskip -30pt
+\contentsline {chapter}{\numberline {1}Introduction}{2}{}%
+\contentsline {chapter}{\numberline {2}Literature Survey}{5}{}%
+\contentsline {section}{\numberline {2.1}Hardware Accelerators for Space Applications}{5}{}%
+\contentsline {section}{\numberline {2.2}DNN Compiler Architectures}{5}{}%
+\contentsline {section}{\numberline {2.3}Memory Optimization Techniques}{6}{}%
+\contentsline {section}{\numberline {2.4}Gaps Addressed by Our Work}{6}{}%
+\contentsline {chapter}{\numberline {3}Problem Definition}{8}{}%
+\contentsline {chapter}{\numberline {4}Methodology}{9}{}%
+\contentsline {section}{\numberline {4.1}System Inputs and Outputs}{9}{}%
+\contentsline {section}{\numberline {4.2}Frame Memory Initialization}{10}{}%
+\contentsline {section}{\numberline {4.3}Filter Memory Initialization}{10}{}%
+\contentsline {section}{\numberline {4.4}Instruction Generation}{11}{}%
+\contentsline {section}{\numberline {4.5}Summary}{12}{}%
+\contentsline {chapter}{\numberline {5}Results}{14}{}%
+\contentsline {section}{\numberline {5.1}Experimental Setup}{14}{}%
+\contentsline {section}{\numberline {5.2}Memory Initialization Validation}{15}{}%
+\contentsline {section}{\numberline {5.3}Instruction Generation Analysis}{15}{}%
+\contentsline {section}{\numberline {5.4}Performance Characteristics}{16}{}%
+\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{17}{}%
+\contentsline {section}{\numberline {6.1}Conclusion}{17}{}%
+\contentsline {section}{\numberline {6.2}Future Work}{18}{}%
+\contentsline {subsection}{\numberline {6.2.1}Architectural Expansion}{18}{}%
+\contentsline {subsection}{\numberline {6.2.2}Model Format Support}{18}{}%
+\contentsline {subsection}{\numberline {6.2.3}Performance Optimization}{18}{}%
+\contentsline {subsection}{\numberline {6.2.4}Developer Tools}{18}{}%
+\contentsline {section}{\numberline {6.3}Final Remarks}{18}{}%
+\contentsline {chapter}{References}{19}{}%

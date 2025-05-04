@@ -1,0 +1,30 @@
+\begin{thebibliography}{1}
+
+\bibitem{nasa2020}
+J.~Anderson and K.~Patel, ``Radiation-hardened fpga implementations for autonomous space navigation,'' {\em IEEE Aerospace Conference Proceedings}, pp.~1--12, 2020.
+
+\bibitem{tvm2018}
+T.~Chen, T.~Moreau, Z.~Jiang, L.~Zheng, E.~Yan, M.~Cowan, H.~Shen, L.~Wang, Y.~Hu, L.~Ceze, {\em et~al.}, ``Tvm: An automated end-to-end optimizing compiler for deep learning,'' in {\em 13th USENIX Symposium on Operating Systems Design and Implementation}, pp.~578--594, 2018.
+
+\bibitem{mlir2020}
+C.~Lattner, M.~Amini, U.~Bondhugula, A.~Cohen, A.~Davis, J.~Pienaar, R.~Riddle, T.~Shpeisman, N.~Vasilache, and O.~Zinenko, ``Mlir: A compiler infrastructure for the end of moore's law,'' {\em arXiv preprint arXiv:2002.11054}, 2020.
+
+\bibitem{googletpu2019}
+N.~Jouppi, D.~Yoon, M.~Ashcraft, {\em et~al.}, ``Compiling for edge tpus: Practical optimizations for on-device ml.'' Google AI Blog, 2019.
+
+\bibitem{systolic2021}
+Y.~Chen and W.~Chen, ``Memory-efficient systolic arrays for space-grade neural networks,'' {\em IEEE Transactions on Aerospace and Electronic Systems}, vol.~57, no.~2, pp.~1023--1035, 2021.
+
+\bibitem{esa2021}
+M.~Muller, A.~Schmidt, and P.~Dubois, ``Asic-based vision processors for european space applications,'' {\em Journal of Spacecraft and Rockets}, vol.~58, no.~3, pp.~789--801, 2021.
+
+\bibitem{isro2022}
+R.~Sharma and A.~Desai, ``Power-efficient cnn accelerator design for indian space missions,'' Tech. Rep. TR-2022-AI-004, ISRO, 2022.
+
+\bibitem{encoding2020}
+S.~Gupta and L.~Li, ``Compressed weight encoding for radiation-hardened neural networks,'' in {\em Proceedings of the International Conference on Compilers, Architectures and Synthesis for Embedded Systems}, pp.~1--10, 2020.
+
+\bibitem{buffering2019}
+A.~Kumar and P.~Zhang, ``Double-buffering techniques for real-time space applications,'' {\em ACM Transactions on Embedded Computing Systems}, vol.~18, no.~5s, pp.~1--22, 2019.
+
+\end{thebibliography}

@@ -1,6 +1,11 @@
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Diagram depicting the connection between between master processor and the AI chip.}}{4}{}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Overview of the ASIC AI Chip}}{5}{}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Overview of the compiler}}{13}{}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Input extraction process for frame memory}}{14}{}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Instruction generation process}}{16}{}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

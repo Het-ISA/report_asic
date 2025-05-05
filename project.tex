@@ -119,15 +119,44 @@ Assistant Professor & \hspace{5cm} Associate Professor\\
 \chapter*{DECLARATION}
 We hereby declare that the project titled, \textbf{DNN Compiler for Custom AI Chip ISA}, is our own work and that, to the best of our knowledge and belief, it contains no material previously published or written by another person nor material which has been accepted for the award of any other degree or diploma of the university or any other institute of higher learning, except where due acknowledgement and reference has been made in the text.\\
 
-\vspace{2cm}
+\vspace{1.2cm}
+
 \noindent{
 \begin{tabular}{p{8cm}p{6cm}}
-Place :  & Signature : \\
-Date : & Name : \\
- & Reg. No. : 
+Place : Kattangal& \\
+Date :  05/05/2025& \\
 \end{tabular}
 }
-\newpage 
+
+\vspace{2cm}
+
+\noindent{
+\begin{tabular}{p{8cm}p{6cm}}
+Name : Mohammed Ameen & Signature : \\
+Reg. No. : B210515CS & \\
+\end{tabular}
+}
+
+\vspace{1.2cm}
+
+\noindent{
+\begin{tabular}{p{8cm}p{6cm}}
+Name : Vivek K P & Signature : \\
+Reg. No. : B210473CS & \\
+\end{tabular}
+}
+
+\vspace{1.2cm}
+
+\noindent{
+\begin{tabular}{p{8cm}p{6cm}}
+Name : Adil Abdul Jabbar & Signature : \\
+Reg. No. : B210461CS & \\
+\end{tabular}
+}
+
+\newpage
+
 
 \begin{abstract}
 Our project focuses on developing a DNN compiler that translates deep neural network models from Python-based AI frameworks to a custom AI chip’s Instruction Set Architecture (ISA), designed by the \textbf{Indian Space Research Organization (ISRO)}. The compiler converts models, built and trained using libraries like TensorFlow and PyTorch, into optimized machine instructions executed by the custom ASIC
@@ -142,9 +171,7 @@ It is with immense gratitude that we acknowledge the support and guidance receiv
 
 First and foremost, we would like to express our sincere thanks to \textbf{Dr. Nirmal Kumar Boran}, our project guide, for his invaluable encouragement, continuous support, and insightful guidance throughout the course of this work. His expertise and mentorship played a pivotal role in shaping the direction and outcome of our project.
 
-We are also deeply grateful to \textbf{Dr. Chandramani Chaudhary} Assistant Professor, whose active involvement, thoughtful suggestions, and participation in our discussions greatly enriched this project. Her consistent support and encouragement have been of immense value.
-
-We extend our heartfelt appreciation to \textbf{Piyush} and \textbf{Kaustab} from \textbf{URSC, ISRO}, key members of the ASIC chip development team, for their constant coordination, technical insights, and unwavering support in integrating our compiler with the hardware development process.
+We extend our heartfelt appreciation to \textbf{Piyush} and \textbf{Kaustubh} from \textbf{URSC, ISRO}, key members of the ASIC chip development team, for their constant coordination, technical insights, and unwavering support in integrating our compiler with the hardware development process.
 
 Finally, we thank all faculty members, peers, and family members who have directly or indirectly supported and encouraged us during this project.
 \vspace{4.0mm}
@@ -152,7 +179,7 @@ Finally, we thank all faculty members, peers, and family members who have direct
 \addtocontents{toc}{\vskip-30pt}
 \end{spacing}
 \listoffigures
-\listoftables
+% \listoftables
 \vspace{-2 em}
 \printglossary[nonumberlist]
 
@@ -161,29 +188,119 @@ Finally, we thank all faculty members, peers, and family members who have direct
 
 \chapter{Introduction}
 
-Artificial Intelligence (AI) has emerged as a transformative force in space exploration, enabling autonomous decision-making in critical applications such as satellite imaging, rover navigation, and real-time sensor data processing. Deep Neural Networks (DNNs), a subset of machine learning, have demonstrated exceptional performance in tasks like image classification, object detection, and signal processing. These networks mimic the human brain's structure, consisting of interconnected layers (e.g., convolutional, pooling, and fully connected layers) that extract hierarchical features from raw data through iterative training.
+Artificial Intelligence (AI) has emerged as a transformative technology in space exploration, enabling autonomous decision-making for complex tasks such as satellite image analysis, planetary rover navigation, and real-time sensor data processing. Among AI techniques, \textbf{Deep Neural Networks (DNNs)} have demonstrated state-of-the-art performance in domains like image classification, object detection, and time-series analysis. DNNs are structured as layered computational graphs—comprising convolutional, pooling, and fully connected layers—that extract hierarchical features from raw inputs via iterative training.
 
-However, deploying AI models in space environments presents unique challenges. Space missions impose stringent constraints on \textbf{power consumption, size, weight, and radiation tolerance}, making conventional GPU-based inference systems impractical. General-purpose GPUs, while powerful, are energy-intensive and lack the ruggedization required for harsh space conditions. To address these limitations, specialized hardware solutions are essential.
+Despite their advantages, the deployment of AI models in space environments is constrained by several critical factors: \textbf{power consumption, physical size, weight, and radiation tolerance}. Conventional inference platforms, such as general-purpose GPUs, are unsuitable for space missions due to their high energy demands and limited environmental robustness. These limitations necessitate the development of specialized, low-power hardware accelerators tailored to the rigors of space-based deployment.
 
-The \textbf{Indian Space Research Organization (ISRO)} is pioneering the development of a \textbf{custom Application-Specific Integrated Circuit (ASIC)} tailored for AI inference in space. Unlike general-purpose processors, this ASIC is optimized to execute neural network operations\u2014such as convolutions, pooling, and dense layer computations\u2014with minimal power usage. Its \textbf{CISC-style Instruction Set Architecture (ISA)} is designed to perform these operations efficiently using a reduced instruction set, significantly lowering energy consumption compared to traditional GPUs.
+To address this challenge, the \textbf{Indian Space Research Organization (ISRO)} is developing a custom \textbf{Application-Specific Integrated Circuit (ASIC)} designed specifically for DNN inference in space. This ASIC is engineered to efficiently execute fundamental neural network operations—including convolution, pooling, and dense layer computation—while minimizing power usage. The ASIC leverages a \textbf{Complex Instruction Set Computing (CISC)}-style \textbf{Instruction Set Architecture (ISA)}, purpose-built to execute DNN workloads using compact and optimized instruction sequences.
 
-A critical component of this system is the \textbf{memory hierarchy}, which includes:
+\section{System Overview}
+The overall inference process is coordinated by a dedicated \textbf{master processor}, which is responsible for initializing the ASIC by loading data and parameters into the appropriate \textbf{frame and filter memory} regions in RAM. The master processor orchestrates the transfer of input feature maps, kernel weights, and DSP parameters, and then triggers execution on the ASIC via control signals. This architecture ensures energy-efficient inference execution that adheres to the strict reliability and operational constraints of space missions.
+
+This work focuses on the development of the supporting \textbf{software toolchain} required to interface with the ASIC, with particular emphasis on the design of a dedicated \textbf{DNN compiler}. This compiler serves as the bridge between high-level AI models and the ASIC's custom ISA, enabling efficient, real-time AI inference tailored for ISRO's future spaceborne platforms. The subsequent chapters will explore the system design, compiler architecture, implementation strategy, and performance evaluation in detail.
+
+\begin{figure}[!b]
+\centering
+  \includegraphics[width=\textwidth]{system_overview1.png}
+  \caption{Diagram depicting the connection between between master processor and the AI chip.}
+  \label{label5}
+\end{figure}
+
+
+\begin{figure}[!b]
+\centering
+  \includegraphics[width=\textwidth]{asic_data_flow1.png}
+  \caption{Overview of the ASIC AI Chip}
+  \label{label3}
+\end{figure}
+
+
+\section{Supported Layers}
+
+The hardware provides native support for:
 \begin{itemize}
-    \item \textbf{Frame Memory:} Stores intermediate feature maps generated during layer-wise processing.
-    \item \textbf{Filter Memory:} Holds pre-loaded kernel weights for convolutional and dense layers, along with additional configuration parameters.
+    \item \textbf{Convolution layer}
+    \item \textbf{Maxpooling layer}
+    \item \textbf{Dense (Fully Connected) layer}
 \end{itemize}
 
-To further enhance efficiency, the ASIC makes use of \textbf{DSP parameters} (Digital Signal Processing parameters) during execution. These parameters enable the hardware to perform operations like \textit{bias addition and batch normalization} in a streamlined manner using a compact, parameterized computation model:
+\noindent Additionally, it implicitly supports:
+\begin{itemize}
+    \item \textbf{Batch Normalization layer} — integrated into convolution instructions using DSP parameters (see Section~\ref{sec:dsp_parameters}).
+\end{itemize}
+
+\section{Memory Layout}
+
+The ASIC is connected to a unified physical RAM that stores all tensors, weights, and parameters. The ISA defines two distinct virtual memory regions:
+
+\begin{itemize}
+    \item \textbf{Frame Memory}: stores input data, intermediate activations, and final outputs.
+    \item \textbf{Filter Memory}: stores layer weights, DSP parameters, bias vectors and intermediate split results.
+\end{itemize}
+
+Although both memory types reside at arbitrary locations in RAM, the ISA treats each as starting from address 0.
+
+\subsection{Frame Memory}
+
+Frame memory holds input tensors and is updated dynamically during inference with layer-wise outputs. It is initialized using:
+
+\subsection{Filter Memory}
+
+Filter memory is divided into two sections:
+
+\begin{itemize}
+    \item \textbf{Weights}: Convolution filters, dense layer weights, and maxpooling placeholders.
+    \item \textbf{Parameters}: DSP parameters and bias vectors.
+\end{itemize}
+
+\subsection{Data Representation}
+In the ASIC’s memory layout, data is organized in a \textbf{channel-major} format:
+
+\begin{itemize}
+    \item \textbf{For tensors:} \texttt{channel} $\rightarrow$ \texttt{height} $\rightarrow$ \texttt{width}
+    \item \textbf{For filters:} \texttt{filter} $\rightarrow$ \texttt{channel} $\rightarrow$ \texttt{height} $\rightarrow$ \texttt{width}
+\end{itemize}
+
+This means that all data for a given channel is stored \textit{row by row} before moving to the next channel.
+
+\section{DSP Parameters}
+
+The hardware supports a fused operation using three \textbf{DSP parameters} per output channel: $v_1$, $v_2$, and $v_3$. This enables bias addition and batch normalization through a single transformation, applied as:
 
 \[
-\text{output} = v2 + v1 \times (\text{input} + v3)
+y = v_2 + v_1 \cdot (x + v_3)
 \]
 
-where $v1$, $v2$, and $v3$ are hardware-specific values that reduce the need for additional instructions or processing steps.
+\begin{itemize}
+    \item $x$: Intermediate value after weighted summation.
+    \item $y$: Final output after applying DSP transformation.
+\end{itemize}
 
-The entire inference process is orchestrated by a dedicated \textbf{master processor}, which initializes the \textbf{frame and filter memory regions in RAM} with compiled data and control parameters. It manages the loading of \textit{input feature maps, kernel weights, and DSP parameters} into their respective locations, and then triggers the ASIC's execution by issuing appropriate control signals. This division of responsibilities ensures efficient operation within the strict power and reliability requirements of spaceborne systems.
+\section{Zero Padding}
 
-This work focuses on the \textbf{software toolchain required to support this hardware}, particularly the design and implementation of a \textbf{dedicated DNN compiler} that can bridge the gap between high-level AI models and the ASIC's custom ISA. Subsequent chapters will detail the system requirements, methodology, and results of this development, ultimately enabling \textbf{real-time, energy-efficient AI inference} on ISRO's upcoming space missions.
+Unlike Python frameworks, the ASIC requires input tensors to be \textbf{pre-padded with zeros}. Therefore, zero-padding parameters for a given layer are associated with its \textbf{preceding layer}.
+
+During execution, the chip automatically applies the specified padding to the preceding layer's output before it is consumed by the current layer.
+
+\section{Supported Activation Functions}
+
+The hardware supports the following activation functions:
+\begin{itemize}
+    \item \textbf{Linear} (no activation)
+    \item \textbf{ReLU}
+    \item \textbf{Leaky ReLU}
+\end{itemize}
+
+\noindent ReLU and Leaky ReLU are implemented via a unified operation:
+\begin{verbatim}
+if x < v1:
+  y = v2 * x
+else:
+  y = x
+\end{verbatim}
+
+\noindent where $v1$ and $v2$ are configurable parameters.
+
 \chapter{Literature Survey}
 
 The development of efficient AI compilers for specialized hardware has emerged as a critical research area at the intersection of computer architecture and deep learning. This chapter systematically examines prior work across three key domains relevant to our project, analyzing both the strengths and limitations of existing approaches while identifying the unique contributions of our work in the context of space-grade AI acceleration.
@@ -212,6 +329,13 @@ This section outlines the step-by-step process followed in designing and impleme
 
 The compilation process is divided into three major stages: \textbf{Frame Memory Initialization}, \textbf{Filter Memory Initialization}, and \textbf{Instruction Generation}. Each of these is described in detail below.
 
+\begin{figure}[!b]
+\centering
+  \includegraphics[width=\textwidth]{asic_dnn_compiler1.png}
+  \caption{Overview of the compiler}
+  \label{label1}
+\end{figure}
+
 \section{System Inputs and Outputs}
 
 The compiler accepts two primary inputs:
@@ -227,16 +351,22 @@ The outputs produced by the compiler are:
     \item A sequence of \textbf{machine instructions} written in the ASIC's custom ISA, directing the chip to emulate the model.
 \end{itemize}
 
-\includegraphics[width=\textwidth]{asic_dnn_compiler1.png}
-
+\begin{figure}[!b]
+\centering
+  \includegraphics[width=\textwidth]{extract_ip_data1.png}
+  \caption{Input extraction process for frame memory}
+  \label{label4}
+\end{figure}
 
 The \textbf{master processor} is responsible for writing these memory images to their corresponding memory regions in RAM and initiating the ASIC execution.
 
 \section{Frame Memory Initialization}
 
-The \textbf{frame memory} is a dedicated virtual memory space used to store both input data and intermediate feature maps generated during model inference. 
+The \textbf{frame memory} is a dedicated virtual memory space used to store both input data and intermediate feature maps generated during model inference.
 
-The compiler reads the \textit{input shape} from the trained model and reshapes the input data accordingly. Based on the first layer’s padding requirements, zero-padding is applied to the input. The padded data is then converted into a binary format suitable for the ASIC’s memory system. This binary data is written into a file representing the initial state of frame memory, ensuring the ASIC finds the input data in the correct format and location at the start of inference.
+The compiler reads the \textit{input shape} from the trained model and reshapes the input data accordingly. If the first layer requires zero-padding, this padding is applied directly to the input before any computation. Unlike typical deep learning frameworks where padding is implicit, the ASIC expects the input tensor to be \textit{pre-padded}, meaning the padding must be present in the input written to memory.
+
+After applying zero-padding, the data is converted into a binary format compatible with the ASIC's memory layout. This binary is written into a file that initializes the frame memory, ensuring the ASIC accesses the input in the correct padded format and memory location at the beginning of inference.
 
 \section{Filter Memory Initialization}
 
@@ -249,7 +379,33 @@ The compiler iterates through each relevant layer of the model, performing the f
     \item Calculating and appending the corresponding DSP parameters for each operation, based on the model’s configuration.
 \end{itemize}
 
+\textbf{Special handling is required for the first Dense layer after a Flatten layer.} Since Keras uses a \textit{height $\rightarrow$ width $\rightarrow$ channel} memory order and the hardware expects a \textit{channel-major} format, the weights must be \textbf{reordered} to align with the hardware's memory layout. This ensures consistency in dot product computations during inference.
+
+
 At the end of this stage, the filter memory image file contains all the necessary kernel weights and DSP parameters in the correct order for efficient access during inference.
+
+\subsection{DSP Parameters}
+
+The hardware supports a fused \textbf{DSP operation} using three parameters per output channel: $v_1$, $v_2$, and $v_3$. This enables both \textbf{bias addition} and \textbf{batch normalization} in a single step, applied at the \textit{instruction level}.
+
+\textbf{Without splitting}, DSP is integrated into the convolution instruction. \textbf{With splitting}, it is applied only in the final addition instruction to ensure correctness after accumulation.
+
+\subsection*{Parameter Computation}
+\begin{itemize}
+    \item With batch normalization:
+    \[
+    v_1 = \frac{\gamma}{\sqrt{\text{variance} + \epsilon}}, \quad
+    v_2 = \beta, \quad
+    v_3 = \text{bias} - \text{mean}
+    \]
+    \item Without batch normalization:
+    \[
+    v_1 = 1, \quad
+    v_2 = 0, \quad
+    v_3 = \text{bias}
+    \]
+\end{itemize}
+
 
 \section{Instruction Generation}
 
@@ -258,30 +414,45 @@ In this stage, the compiler generates a sequence of machine instructions that di
     \item Extracts details such as stride, padding, kernel size, input/output addresses, and DSP parameter addresses.
     \item Generates instructions that conform to the ASIC’s CISC-style ISA, efficiently handling operations like convolution, max pooling, and dense computations.
 \end{itemize}
-\includegraphics[width=\textwidth]{instruction_generation1.png}
 
-\subsection*{Handling Hardware Constraints in Convolution Layers}
+\begin{figure}[!b]
+\centering
+  \includegraphics[width=\textwidth]{instruction_generation1.png}
+  \caption{Instruction generation process}
+  \label{label2}
+\end{figure}
 
-Since the ASIC may have a limited number of processing elements (PEs), the compiler dynamically manages \textbf{splitting of computations along input channels} specifically for convolution layers during the instruction generation phase.
+\subsection{Activation Functions}
 
-If the number of available PEs is insufficient to process the entire convolution operation at once:
+
+\textbf{ReLU} and \textbf{Leaky ReLU} are implemented using a unified hardware operation:
+\[
+y = 
+\begin{cases}
+v_2 \cdot x & \text{if } x < v_1 \\
+x & \text{otherwise}
+\end{cases}
+\]
+
+\noindent
+where $x$ is the input value, $y$ is the activated output, and:
+\subsection*{Parameter Calculation}
 \begin{itemize}
-    \item The input feature maps and corresponding filters are split along the input channel dimension.
-    \item The result of the \textbf{first split} is computed and stored in the \textbf{frame memory}.
-    \item The results of \textbf{subsequent splits} are computed one by one, with each result temporarily stored in a designated location in the \textbf{filter memory}.
-    \item After each split, an \textbf{addition instruction} is generated to add the partial result from the filter memory to the cumulative result stored in the frame memory.
-    \item This process repeats until all splits have been processed and accumulated, producing the final convolution output in the frame memory.
+    \item For ReLU: $v_1 = 0$, $v_2 = 0$
+    \item For Leaky ReLU: $v_1 = 0$, $v_2$ is the negative slope (e.g., $0.01$)
 \end{itemize}
 
-This mechanism ensures correct and efficient handling of convolutions even under processing element limitations, while maintaining correctness through controlled accumulation of split results.
+\section{Hardware Limitations and Splitting}
 
-\subsection*{Splitting in Dense Layers}
+In the AI chip, the \textbf{block size} refers to the total number of input tensor elements processed together to compute a single output value. This is equivalent to the size of the convolution filter:
 
-For \textbf{dense layers}, a similar splitting mechanism is employed when the number of inputs exceeds the number of available PEs. In these cases:
-\begin{itemize}
-    \item The input and weight vectors are divided into smaller splits.
-    \item Each partial result is accumulated sequentially in memory, with bias addition handled by a final instruction.
-\end{itemize}
+\[
+\text{Block size} = \text{filter height} \times \text{filter width} \times \text{filter depth}
+\]
+
+This block is the smallest unit that must be computed in a single cycle. If the available parallel processing elements are fewer than the block size, the compiler automatically \textbf{splits} the convolution or dense operation into smaller sub-blocks. These partial computations are independently executed and their results are accumulated to generate the final output.
+
+The same mechanism is applied to \textbf{Dense layers}, which are treated as a special case of convolution. However, the splitting strategy differs between convolution and dense layers based on data layout and filter structure.
 
 \section{Summary}
 
@@ -289,45 +460,31 @@ This methodology outlines the complete pipeline from parsing a trained model and
 
 The compiler ensures that frame and filter memories are properly initialized, DSP parameters are applied correctly, and the generated instruction stream executes the model reliably on ISRO’s custom AI hardware.
 
-
-% \begin{figure}[!b]
-% \centering
-%   \includegraphics[scale = 0.3]{sample.png}
-%   \caption{Image caption}
-%   \label{label1}
-% \end{figure}
-
 \chapter{Results}
 
-The experimental validation of our DNN compiler yielded comprehensive insights into its functionality, efficiency, and correctness. Through rigorous testing across multiple neural network architectures, we were able to verify that the compiler successfully meets its primary objectives of generating optimized machine instructions while properly managing the ASIC's specialized memory hierarchy.
+To validate the correctness of the compiler outputs, multiple levels of verification were performed across memory initialization, instruction generation, and hardware inference results.
 
-\section{Experimental Setup}
-To thoroughly evaluate the compiler's capabilities, we designed a series of test cases using TensorFlow-generated models exported in H5 format. The test suite included three progressively complex architectures:
+\section{Model Compatibility}
 
-First, a simple convolutional model provided a baseline evaluation, consisting of a single convolutional layer followed by max pooling and a fully connected dense layer. This fundamental structure allowed us to verify core functionality before proceeding to more sophisticated architectures.
+The compiler currently supports sequential deep neural network (DNN) architectures composed of convolution, batch normalization, maxpooling, and dense layers. This includes standard models such as \textbf{AlexNet}, \textbf{ResNet}, and \textbf{VGGNet}, which have been successfully compiled and verified on the hardware.
 
-Building on this foundation, we tested a ResNet-inspired model incorporating multiple convolutional layers with skip connections, max pooling operations, and dense layers. This more complex architecture served to validate the compiler's ability to handle deeper networks and non-sequential data flows.
+\section{Memory Verification}
 
-Finally, a fully connected model consisting exclusively of dense layers enabled focused testing of the filter memory management and instruction generation for non-convolutional operations. This configuration proved particularly valuable for verifying the compiler's handling of matrix-vector operations and bias addition.
+For each applicable layer, kernel weights and biases were saved and inspected to ensure they are stored in the correct order and format. This step confirmed that both the \textbf{Filter Memory image} and associated metadata conformed to the expected structure defined by the ISA and compiler specifications.
 
-\section{Memory Initialization Validation}
-The compiler demonstrated robust performance in initializing both frame and filter memory structures. Input tensor reshaping and zero-padding operations were executed flawlessly across all test cases, ensuring proper alignment with convolutional and pooling layer requirements. Detailed examination of the memory initialization files revealed precise mapping of kernel weights to their designated locations in filter memory.
+\section{Instruction Verification}
 
-The DSP parameter calculations for fused bias addition and batch normalization operations showed particular reliability. In all test cases, these parameters were correctly derived from the trained models and stored at their designated memory offsets. Memory address allocation followed the expected layout precisely, with no instances of misalignment or boundary violations observed during testing.
+Instruction correctness was verified by storing and reviewing metadata about each layer, including:
+\begin{itemize}
+    \item Addresses of weights, biases, and DSP parameters
+    \item Input and output tensor addresses
+\end{itemize}
+These were cross-checked against expected values to confirm that the generated instructions correctly reference the initialized memory regions.
 
-\section{Instruction Generation Analysis}
-The compiler's instruction generation capability proved equally robust. Each neural network operation type - whether convolutional, pooling, or dense layer - was accurately translated into the appropriate sequence of machine-level instructions conforming to the ASIC's CISC-style ISA.
+\section{Output Verification}
 
-A particularly noteworthy success was the compiler's handling of computational splitting for convolutional operations. When presented with convolution windows exceeding the ASIC's available processing elements, the compiler correctly decomposed the operation into manageable sub-tasks. The intermediate results were properly stored in designated filter memory regions and subsequently accumulated into final outputs in frame memory through precisely generated addition instructions.
+To further validate the correctness of execution, intermediate outputs from each layer were generated using a Python model that mimics the ASIC's behavior. These were then compared against the corresponding outputs from the hardware after each layer. The results consistently matched, confirming that the compiler and chip produced functionally correct outputs across all supported layers.
 
-Dense layer operations were similarly well-handled, with the compiler demonstrating correct splitting of weight matrices across processing elements followed by accurate bias incorporation. The instruction sequences generated for these operations maintained mathematical equivalence with the reference implementations while respecting the hardware's architectural constraints.
-
-\section{Performance Characteristics}
-The compiler exhibited favorable performance characteristics across all test cases. Compilation times scaled appropriately with model complexity, ranging from a few seconds for simple architectures to approximately one minute for the most complex test case. This linear scaling suggests the compiler's algorithms maintain efficient time complexity as network depth increases.
-
-Memory utilization patterns reflected careful optimization, with both frame and filter memory footprints remaining within expected bounds. The compiler demonstrated particular efficiency in its management of the dual memory hierarchy, minimizing redundant storage while ensuring all operational requirements were met.
-
-These results collectively demonstrate that our compiler successfully meets its design objectives, providing an effective toolchain for deploying neural networks on ISRO's specialized AI accelerator while maintaining rigorous standards of correctness and efficiency. The comprehensive validation across multiple architectures and edge cases establishes a strong foundation for future extensions and optimizations.
 \chapter{Conclusion and Future Work}
 
 \section{Conclusion}

@@ -1,28 +1,40 @@
 \vskip -30pt
 \contentsline {chapter}{\numberline {1}Introduction}{2}{}%
-\contentsline {chapter}{\numberline {2}Literature Survey}{5}{}%
-\contentsline {section}{\numberline {2.1}Hardware Accelerators for Space Applications}{5}{}%
-\contentsline {section}{\numberline {2.2}DNN Compiler Architectures}{5}{}%
-\contentsline {section}{\numberline {2.3}Memory Optimization Techniques}{6}{}%
-\contentsline {section}{\numberline {2.4}Gaps Addressed by Our Work}{6}{}%
-\contentsline {chapter}{\numberline {3}Problem Definition}{8}{}%
-\contentsline {chapter}{\numberline {4}Methodology}{9}{}%
-\contentsline {section}{\numberline {4.1}System Inputs and Outputs}{9}{}%
-\contentsline {section}{\numberline {4.2}Frame Memory Initialization}{10}{}%
-\contentsline {section}{\numberline {4.3}Filter Memory Initialization}{10}{}%
-\contentsline {section}{\numberline {4.4}Instruction Generation}{11}{}%
-\contentsline {section}{\numberline {4.5}Summary}{12}{}%
-\contentsline {chapter}{\numberline {5}Results}{14}{}%
-\contentsline {section}{\numberline {5.1}Experimental Setup}{14}{}%
-\contentsline {section}{\numberline {5.2}Memory Initialization Validation}{15}{}%
-\contentsline {section}{\numberline {5.3}Instruction Generation Analysis}{15}{}%
-\contentsline {section}{\numberline {5.4}Performance Characteristics}{16}{}%
-\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{17}{}%
-\contentsline {section}{\numberline {6.1}Conclusion}{17}{}%
-\contentsline {section}{\numberline {6.2}Future Work}{18}{}%
-\contentsline {subsection}{\numberline {6.2.1}Architectural Expansion}{18}{}%
-\contentsline {subsection}{\numberline {6.2.2}Model Format Support}{18}{}%
-\contentsline {subsection}{\numberline {6.2.3}Performance Optimization}{18}{}%
-\contentsline {subsection}{\numberline {6.2.4}Developer Tools}{18}{}%
-\contentsline {section}{\numberline {6.3}Final Remarks}{18}{}%
-\contentsline {chapter}{References}{19}{}%
+\contentsline {section}{\numberline {1.1}System Overview}{3}{}%
+\contentsline {section}{\numberline {1.2}Supported Layers}{3}{}%
+\contentsline {section}{\numberline {1.3}Memory Layout}{4}{}%
+\contentsline {subsection}{\numberline {1.3.1}Frame Memory}{5}{}%
+\contentsline {subsection}{\numberline {1.3.2}Filter Memory}{5}{}%
+\contentsline {subsection}{\numberline {1.3.3}Data Representation}{6}{}%
+\contentsline {section}{\numberline {1.4}DSP Parameters}{6}{}%
+\contentsline {section}{\numberline {1.5}Zero Padding}{6}{}%
+\contentsline {section}{\numberline {1.6}Supported Activation Functions}{7}{}%
+\contentsline {chapter}{\numberline {2}Literature Survey}{8}{}%
+\contentsline {section}{\numberline {2.1}Hardware Accelerators for Space Applications}{8}{}%
+\contentsline {section}{\numberline {2.2}DNN Compiler Architectures}{8}{}%
+\contentsline {section}{\numberline {2.3}Memory Optimization Techniques}{9}{}%
+\contentsline {section}{\numberline {2.4}Gaps Addressed by Our Work}{9}{}%
+\contentsline {chapter}{\numberline {3}Problem Definition}{11}{}%
+\contentsline {chapter}{\numberline {4}Methodology}{12}{}%
+\contentsline {section}{\numberline {4.1}System Inputs and Outputs}{12}{}%
+\contentsline {section}{\numberline {4.2}Frame Memory Initialization}{13}{}%
+\contentsline {section}{\numberline {4.3}Filter Memory Initialization}{14}{}%
+\contentsline {subsection}{\numberline {4.3.1}DSP Parameters}{15}{}%
+\contentsline {section}{\numberline {4.4}Instruction Generation}{16}{}%
+\contentsline {subsection}{\numberline {4.4.1}Activation Functions}{17}{}%
+\contentsline {section}{\numberline {4.5}Hardware Limitations and Splitting}{17}{}%
+\contentsline {section}{\numberline {4.6}Summary}{18}{}%
+\contentsline {chapter}{\numberline {5}Results}{19}{}%
+\contentsline {section}{\numberline {5.1}Model Compatibility}{19}{}%
+\contentsline {section}{\numberline {5.2}Memory Verification}{19}{}%
+\contentsline {section}{\numberline {5.3}Instruction Verification}{20}{}%
+\contentsline {section}{\numberline {5.4}Output Verification}{20}{}%
+\contentsline {chapter}{\numberline {6}Conclusion and Future Work}{21}{}%
+\contentsline {section}{\numberline {6.1}Conclusion}{21}{}%
+\contentsline {section}{\numberline {6.2}Future Work}{22}{}%
+\contentsline {subsection}{\numberline {6.2.1}Architectural Expansion}{22}{}%
+\contentsline {subsection}{\numberline {6.2.2}Model Format Support}{22}{}%
+\contentsline {subsection}{\numberline {6.2.3}Performance Optimization}{22}{}%
+\contentsline {subsection}{\numberline {6.2.4}Developer Tools}{22}{}%
+\contentsline {section}{\numberline {6.3}Final Remarks}{22}{}%
+\contentsline {chapter}{References}{23}{}%

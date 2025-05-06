@@ -14,6 +14,7 @@
 \usepackage{amsmath}
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
+\usepackage{graphicx}
 \counterwithout{footnote}{chapter}
 %\usepackage[top=1.4 in]{geometry}
 \algnewcommand{\LeftComment}[1]{\Statex \(\triangleright\) #1}
@@ -40,143 +41,145 @@
 \begin{document}
 
 \begin{titlepage}
-\begin{center}
-\vspace{1cm}
-\huge
-\textbf{DNN Compiler for Custom AI Chip ISA}\\
+    \begin{center}
+        \vspace{1cm}
+        \huge
+        \textbf{DNN Compiler for Custom AI Chip ISA}\\
 
-\normalsize
-\textbf{CS4099 Project Final Report}\\
-\vspace{1cm}
-\emph{Submitted by}\\        
-\vspace{0.5cm}
-\begin{tabular}{ccc}
-\textbf{Mohammed Ameen }&& \textbf{B210515CS}\\
-\textbf{Vivek K P}&& \textbf{B210473CS}\\
-\textbf{Adil Abdul Jabbar}&&\textbf{B210461CS} \\
-%\textbf{Name4}&&\textbf{Reg No: 4} \\
-\end{tabular}\\
-\vspace{0.8cm}
-\textbf{Under the Guidance of\\Dr. Nirmal Kumar Boran}\\
-\vspace{0.8cm}
-\begin{center}
- \includegraphics[width=0.2\textwidth]{nitc-logo.png}
-\end{center}
-\vspace{0.8cm}
-\textbf{Department of Computer Science and Engineering}\\
-\textbf{National Institute of Technology Calicut}\\
-\textbf{Calicut, Kerala, India - 673 601}\\
-\vspace{0.8cm}
-\textbf{April 15, 2025}
-\end{center}
+        \normalsize
+        \textbf{CS4099 Project Final Report}\\
+        \vspace{1cm}
+        \emph{Submitted by}\\
+        \vspace{0.5cm}
+        \begin{tabular}{ccc}
+            \textbf{Mohammed Ameen }                &  & \textbf{B210515CS} \\
+            \textbf{Vivek K P}                      &  & \textbf{B210473CS} \\
+            \textbf{Adil Abdul Jabbar Chundakkadan} &  & \textbf{B210461CS} \\
+            %\textbf{Name4}&&\textbf{Reg No: 4} \\
+        \end{tabular}\\
+        \vspace{0.8cm}
+        \textbf{Under the Guidance of\\Dr. Nirmal Kumar Boran}\\
+        \vspace{0.8cm}
+        \begin{center}
+            \includegraphics[width=0.2\textwidth]{nitc-logo.png}
+        \end{center}
+        \vspace{0.8cm}
+        \textbf{Department of Computer Science and Engineering}\\
+        \textbf{National Institute of Technology Calicut}\\
+        \textbf{Calicut, Kerala, India - 673 601}\\
+        \vspace{0.8cm}
+        \textbf{May 5, 2025}
+    \end{center}
 \end{titlepage}
 \pagenumbering{roman}
 \begin{spacing}{1.01}
-{
-\thispagestyle{empty}
+    {
+        \thispagestyle{empty}
 
-\fontsize{14}{14}\selectfont
-\centering{\MakeUppercase{\textbf{National Institute of Technology Calicut, Kerala, India - 673 601}}} \\
-\vspace*{0.5cm}
-\fontsize{12}{12}\selectfont
-\centering{\MakeUppercase{\textbf{DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING}}} \\
-\begin{figure}[ht]
-{\centering {\includegraphics[width=0.2\textwidth]{nitc-logo.png}}\par}
-\end{figure}
-2025\\
-\vspace{0.5cm}
-\fontsize{14}{14}\selectfont
-\textbf{\centering{CERTIFICATE}}\\
-\vspace{0.25cm}
-\fontsize{12}{12}\selectfont
-\onehalfspacing{\textit{Certified that this is a bonafide record of the project work titled}}\\
-\vspace*{0.25cm}
-\textbf{\MakeUppercase{DNN Compiler for Custom AI Chip ISA}}\\
-\vspace*{0.25cm}
-\onehalfspacing{\centering{\textit{done by}}}\\
-\vspace*{0.25cm}
-\begin{tabular}{ccc}
-\textbf{Mohammed Ameen }\\
-\textbf{Vivek K P}\\
-\textbf{Adil Abdul Jabbar}\\
-%\textbf{Name4} \\
-\end{tabular}\\
-\vspace*{0.25cm}
-\onehalfspacing{ \textit{\centering{of eighth semester B. Tech in partial fulfillment of the requirements for the award of the degree of Bachelor of Technology in Computer Science and Engineering of the National Institute of Technology Calicut}}}\\
-\vspace*{0.5cm}
-\noindent{
-\begin{tabular}{p{4.8cm}cp{4.5cm}}
-\textbf{Project Guide}  & \hfill \textbf{Head of Department} \\
-Dr. Nirmal Kumar Boran & \hfill Dr. Subashini R\\
-Assistant Professor & \hspace{5cm} Associate Professor\\
- & & \\
- & & \\
-  & & \\
+        \fontsize{14}{14}\selectfont
+        \centering{\MakeUppercase{\textbf{National Institute of Technology Calicut, Kerala, India - 673 601}}} \\
+        \vspace*{0.5cm}
+        \fontsize{12}{12}\selectfont
+        \centering{\MakeUppercase{\textbf{DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING}}} \\
+        \begin{figure}[ht]
+            {\centering {\includegraphics[width=0.2\textwidth]{nitc-logo.png}}\par}
+        \end{figure}
+        2025\\
+        \vspace{0.5cm}
+        \fontsize{14}{14}\selectfont
+        \textbf{\centering{CERTIFICATE}}\\
+        \vspace{0.25cm}
+        \fontsize{12}{12}\selectfont
+        \onehalfspacing{\textit{Certified that this is a bonafide record of the project work titled}}\\
+        \vspace*{0.25cm}
+        \textbf{\MakeUppercase{DNN Compiler for Custom AI Chip ISA}}\\
+        \vspace*{0.25cm}
+        \onehalfspacing{\centering{\textit{done by}}}\\
+        \vspace*{0.25cm}
+        \begin{tabular}{ccc}
+            \textbf{Mohammed Ameen }                \\
+            \textbf{Vivek K P}                      \\
+            \textbf{Adil Abdul Jabbar Chundakkadan} \\
+            %\textbf{Name4} \\
+        \end{tabular}\\
+        \vspace*{0.25cm}
+        \onehalfspacing{ \textit{\centering{of eighth semester B. Tech in partial fulfillment of the requirements for the award of the degree of Bachelor of Technology in Computer Science and Engineering of the National Institute of Technology Calicut}}}\\
+        \vspace*{0.5cm}
+        \noindent{
+            \begin{tabular}{p{4.8cm}cp{4.5cm}}
+                \textbf{Project Guide} & \hfill \textbf{Head of Department}   \\
+                Dr. Nirmal Kumar Boran & \hfill Dr. Subashini R               \\
+                Assistant Professor    & \hspace{5cm} Associate Professor     \\
+                                       &                                    & \\
+                                       &                                    & \\
+                                       &                                    & \\
+            \end{tabular}
+        }
+    }
+    \chapter*{DECLARATION}
+    We hereby declare that the project titled, \textbf{DNN Compiler for Custom AI Chip ISA}, is our own work and that, to the best of our knowledge and belief, it contains no material previously published or written by another person nor material which has been accepted for the award of any other degree or diploma of the university or any other institute of higher learning, except where due acknowledgement and reference has been made in the text.\\
 
-\end{tabular}
-}
-}
-\chapter*{DECLARATION}
-We hereby declare that the project titled, \textbf{DNN Compiler for Custom AI Chip ISA}, is our own work and that, to the best of our knowledge and belief, it contains no material previously published or written by another person nor material which has been accepted for the award of any other degree or diploma of the university or any other institute of higher learning, except where due acknowledgement and reference has been made in the text.\\
+    \vspace{1.2cm}
 
-\vspace{1.2cm}
+    \noindent{
+        \begin{tabular}{p{8cm}p{6cm}}
+            Place : NIT Calicut & \\
+            Date :  05/05/2025  & \\
+        \end{tabular}
+    }
 
-\noindent{
-\begin{tabular}{p{8cm}p{6cm}}
-Place : Kattangal& \\
-Date :  05/05/2025& \\
-\end{tabular}
-}
+    \noindent\begin{minipage}{\textwidth}
+        \vspace{1.2cm}
+    
+        \noindent
+        \begin{tabular}{p{8cm}p{6cm}}
+            Name : Mohammed Ameen & Signature :
+            \includegraphics[height=1.12cm]{ameen-signature.png}  \\
+            Reg. No. : B210515CS  &             \\
+        \end{tabular}
+    
+        \vspace{0.8cm}
+    
+        \noindent
+        \begin{tabular}{p{8cm}p{6cm}}
+            Name : Vivek K P     & Signature :
+            \includegraphics[height=1.12cm]{vivek-signature.png}  \\
+            Reg. No. : B210473CS &             \\
+        \end{tabular}
+    
+        \vspace{0.8cm}
+    
+        \noindent
+        \begin{tabular}{p{8cm}p{6cm}}
+            Name : Adil Abdul Jabbar Chundakkadan & Signature :
+            \includegraphics[height=1.12cm]{adil-signature.png}  \\
+            Reg. No. : B210461CS                  &             \\
+        \end{tabular}
+    \end{minipage}
+    
 
-\vspace{2cm}
-
-\noindent{
-\begin{tabular}{p{8cm}p{6cm}}
-Name : Mohammed Ameen & Signature : \\
-Reg. No. : B210515CS & \\
-\end{tabular}
-}
-
-\vspace{1.2cm}
-
-\noindent{
-\begin{tabular}{p{8cm}p{6cm}}
-Name : Vivek K P & Signature : \\
-Reg. No. : B210473CS & \\
-\end{tabular}
-}
-
-\vspace{1.2cm}
-
-\noindent{
-\begin{tabular}{p{8cm}p{6cm}}
-Name : Adil Abdul Jabbar & Signature : \\
-Reg. No. : B210461CS & \\
-\end{tabular}
-}
-
-\newpage
+    \clearpage
 
 
-\begin{abstract}
-Our project focuses on developing a DNN compiler that translates deep neural network models from Python-based AI frameworks to a custom AI chip’s Instruction Set Architecture (ISA), designed by the \textbf{Indian Space Research Organization (ISRO)}. The compiler converts models, built and trained using libraries like TensorFlow and PyTorch, into optimized machine instructions executed by the custom ASIC
+    \begin{abstract}
+        Our project focuses on developing a DNN compiler that translates deep neural network models from Python-based AI frameworks to a custom AI chip’s Instruction Set Architecture (ISA), designed by the \textbf{Indian Space Research Organization (ISRO)}. The compiler converts models, built and trained using libraries like TensorFlow and PyTorch, into optimized machine instructions executed by the custom ASIC
 
-The ASIC features a CISC-style ISA, capable of performing neural network operations like convolution and pooling with just a few instructions. The compiler is responsible for extracting layer-wise information, generating instructions for each layer, managing data dependencies, and optimizing memory usage. It also handles weight extraction, preprocessing, and memory arrangement to match the chip’s expectations.
+        The ASIC features a CISC-style ISA, capable of performing neural network operations like convolution and pooling with just a few instructions. The compiler is responsible for extracting layer-wise information, generating instructions for each layer, managing data dependencies, and optimizing memory usage. It also handles weight extraction, preprocessing, and memory arrangement to match the chip’s expectations.
 
-This project contributes to ISRO’s larger vision of deploying custom ASICs in future space missions for tasks like real-time image processing and AI inference, where such chips outperform conventional GPUs under strict constraints like power limitations and harsh environments.
+        This project contributes to ISRO’s larger vision of deploying custom ASICs in future space missions for tasks like real-time image processing and AI inference, where such chips outperform conventional GPUs under strict constraints like power limitations and harsh environments.
 
-\end{abstract}
-\chapter*{\rm \large \bf ACKNOWLEDGEMENT}
-It is with immense gratitude that we acknowledge the support and guidance received from several individuals, without whom the successful completion of this project would not have been possible.
+    \end{abstract}
+    \chapter*{\rm \large \bf ACKNOWLEDGEMENT}
+    It is with immense gratitude that we acknowledge the support and guidance received from several individuals, without whom the successful completion of this project would not have been possible.
 
-First and foremost, we would like to express our sincere thanks to \textbf{Dr. Nirmal Kumar Boran}, our project guide, for his invaluable encouragement, continuous support, and insightful guidance throughout the course of this work. His expertise and mentorship played a pivotal role in shaping the direction and outcome of our project.
+    First and foremost, we would like to express our sincere thanks to \textbf{Dr. Nirmal Kumar Boran}, our project guide, for his invaluable encouragement, continuous support, and insightful guidance throughout the course of this work. His expertise and mentorship played a pivotal role in shaping the direction and outcome of our project.
 
-We extend our heartfelt appreciation to \textbf{Piyush} and \textbf{Kaustubh} from \textbf{URSC, ISRO}, key members of the ASIC chip development team, for their constant coordination, technical insights, and unwavering support in integrating our compiler with the hardware development process.
+    We extend our heartfelt appreciation to \textbf{Piyush} and \textbf{Kaustubh} from \textbf{URSC, ISRO}, key members of the ASIC chip development team, for their constant coordination, technical insights, and unwavering support in integrating our compiler with the hardware development process.
 
-Finally, we thank all faculty members, peers, and family members who have directly or indirectly supported and encouraged us during this project.
-\vspace{4.0mm}
-\tableofcontents
-\addtocontents{toc}{\vskip-30pt}
+    Finally, we thank all faculty members, peers, and family members who have directly or indirectly supported and encouraged us during this project.
+    \vspace{4.0mm}
+    \tableofcontents
+    \addtocontents{toc}{\vskip-30pt}
 \end{spacing}
 \listoffigures
 % \listoftables
@@ -200,18 +203,18 @@ The overall inference process is coordinated by a dedicated \textbf{master proce
 This work focuses on the development of the supporting \textbf{software toolchain} required to interface with the ASIC, with particular emphasis on the design of a dedicated \textbf{DNN compiler}. This compiler serves as the bridge between high-level AI models and the ASIC's custom ISA, enabling efficient, real-time AI inference tailored for ISRO's future spaceborne platforms. The subsequent chapters will explore the system design, compiler architecture, implementation strategy, and performance evaluation in detail.
 
 \begin{figure}[!b]
-\centering
-  \includegraphics[width=\textwidth]{system_overview1.png}
-  \caption{Diagram depicting the connection between between master processor and the AI chip.}
-  \label{label5}
+    \centering
+    \includegraphics[width=\textwidth]{system_overview1.png}
+    \caption{Diagram depicting the connection between between master processor and the AI chip.}
+    \label{label5}
 \end{figure}
 
 
 \begin{figure}[!b]
-\centering
-  \includegraphics[width=\textwidth]{asic_data_flow1.png}
-  \caption{Overview of the ASIC AI Chip}
-  \label{label3}
+    \centering
+    \includegraphics[width=\textwidth]{asic_data_flow1.png}
+    \caption{Overview of the ASIC AI Chip}
+    \label{label3}
 \end{figure}
 
 
@@ -268,7 +271,7 @@ This means that all data for a given channel is stored \textit{row by row} befor
 The hardware supports a fused operation using three \textbf{DSP parameters} per output channel: $v_1$, $v_2$, and $v_3$. This enables bias addition and batch normalization through a single transformation, applied as:
 
 \[
-y = v_2 + v_1 \cdot (x + v_3)
+    y = v_2 + v_1 \cdot (x + v_3)
 \]
 
 \begin{itemize}
@@ -325,15 +328,15 @@ To address these challenges, the Indian Space Research Organization (ISRO) is de
 This project aims to develop a compiler that converts models, built using Python frameworks into optimized machine code for the ASIC. The compiler handles instruction generation, memory management, and model-to-ISA mapping, enabling real-time, power-efficient AI inference on ISRO’s space missions.
 
 \chapter{Methodology}
-This section outlines the step-by-step process followed in designing and implementing the DNN compiler for the custom AI chip. The compiler serves as a bridge between Python-based AI frameworks and the custom Instruction Set Architecture (ISA) of the ASIC. The focus here is on how trained AI models and input data are transformed into machine-level instructions and memory layouts compatible with the chip's architecture. 
+This section outlines the step-by-step process followed in designing and implementing the DNN compiler for the custom AI chip. The compiler serves as a bridge between Python-based AI frameworks and the custom Instruction Set Architecture (ISA) of the ASIC. The focus here is on how trained AI models and input data are transformed into machine-level instructions and memory layouts compatible with the chip's architecture.
 
 The compilation process is divided into three major stages: \textbf{Frame Memory Initialization}, \textbf{Filter Memory Initialization}, and \textbf{Instruction Generation}. Each of these is described in detail below.
 
 \begin{figure}[!b]
-\centering
-  \includegraphics[width=\textwidth]{asic_dnn_compiler1.png}
-  \caption{Overview of the compiler}
-  \label{label1}
+    \centering
+    \includegraphics[width=\textwidth]{asic_dnn_compiler1.png}
+    \caption{Overview of the compiler}
+    \label{label1}
 \end{figure}
 
 \section{System Inputs and Outputs}
@@ -352,10 +355,10 @@ The outputs produced by the compiler are:
 \end{itemize}
 
 \begin{figure}[!b]
-\centering
-  \includegraphics[width=\textwidth]{extract_ip_data1.png}
-  \caption{Input extraction process for frame memory}
-  \label{label4}
+    \centering
+    \includegraphics[width=\textwidth]{extract_ip_data1.png}
+    \caption{Input extraction process for frame memory}
+    \label{label4}
 \end{figure}
 
 The \textbf{master processor} is responsible for writing these memory images to their corresponding memory regions in RAM and initiating the ASIC execution.
@@ -393,17 +396,17 @@ The hardware supports a fused \textbf{DSP operation} using three parameters per 
 \subsection*{Parameter Computation}
 \begin{itemize}
     \item With batch normalization:
-    \[
-    v_1 = \frac{\gamma}{\sqrt{\text{variance} + \epsilon}}, \quad
-    v_2 = \beta, \quad
-    v_3 = \text{bias} - \text{mean}
-    \]
+          \[
+              v_1 = \frac{\gamma}{\sqrt{\text{variance} + \epsilon}}, \quad
+              v_2 = \beta, \quad
+              v_3 = \text{bias} - \text{mean}
+          \]
     \item Without batch normalization:
-    \[
-    v_1 = 1, \quad
-    v_2 = 0, \quad
-    v_3 = \text{bias}
-    \]
+          \[
+              v_1 = 1, \quad
+              v_2 = 0, \quad
+              v_3 = \text{bias}
+          \]
 \end{itemize}
 
 
@@ -416,10 +419,10 @@ In this stage, the compiler generates a sequence of machine instructions that di
 \end{itemize}
 
 \begin{figure}[!b]
-\centering
-  \includegraphics[width=\textwidth]{instruction_generation1.png}
-  \caption{Instruction generation process}
-  \label{label2}
+    \centering
+    \includegraphics[width=\textwidth]{instruction_generation1.png}
+    \caption{Instruction generation process}
+    \label{label2}
 \end{figure}
 
 \subsection{Activation Functions}
@@ -427,11 +430,11 @@ In this stage, the compiler generates a sequence of machine instructions that di
 
 \textbf{ReLU} and \textbf{Leaky ReLU} are implemented using a unified hardware operation:
 \[
-y = 
-\begin{cases}
-v_2 \cdot x & \text{if } x < v_1 \\
-x & \text{otherwise}
-\end{cases}
+    y =
+    \begin{cases}
+        v_2 \cdot x & \text{if } x < v_1 \\
+        x           & \text{otherwise}
+    \end{cases}
 \]
 
 \noindent
@@ -447,7 +450,7 @@ where $x$ is the input value, $y$ is the activated output, and:
 In the AI chip, the \textbf{block size} refers to the total number of input tensor elements processed together to compute a single output value. This is equivalent to the size of the convolution filter:
 
 \[
-\text{Block size} = \text{filter height} \times \text{filter width} \times \text{filter depth}
+    \text{Block size} = \text{filter height} \times \text{filter width} \times \text{filter depth}
 \]
 
 This block is the smallest unit that must be computed in a single cycle. If the available parallel processing elements are fewer than the block size, the compiler automatically \textbf{splits} the convolution or dense operation into smaller sub-blocks. These partial computations are independently executed and their results are accumulated to generate the final output.
@@ -456,7 +459,7 @@ The same mechanism is applied to \textbf{Dense layers}, which are treated as a s
 
 \section{Summary}
 
-This methodology outlines the complete pipeline from parsing a trained model and input data to generating machine-ready instruction sets and memory images for the ASIC chip. The seamless integration of the splitting mechanism within the instruction generation phase allows the compiler to efficiently handle models even under hardware limitations. 
+This methodology outlines the complete pipeline from parsing a trained model and input data to generating machine-ready instruction sets and memory images for the ASIC chip. The seamless integration of the splitting mechanism within the instruction generation phase allows the compiler to efficiently handle models even under hardware limitations.
 
 The compiler ensures that frame and filter memories are properly initialized, DSP parameters are applied correctly, and the generated instruction stream executes the model reliably on ISRO’s custom AI hardware.
 
